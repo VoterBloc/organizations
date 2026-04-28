@@ -1,0 +1,26 @@
+id: vb-org/union:service_employees_international_union
+name: Service Employees International Union
+type: org
+classification: union
+abbreviation: SEIU
+aliases:
+  - SEIU
+founded: 1921-04-23
+headquarters: ocd-division/country:us/district:dc
+website: https://www.seiu.org
+political_lean: left
+tax_status: 501c5
+mission: >
+  To improve the lives of working people and their families and to lead the
+  way to a more just and humane society.
+issues:
+  - labor_rights
+  - healthcare
+  - minimum_wage
+  - immigration
+ids:
+  wikidata: Q1330392
+  ballotpedia: Service_Employees_International_Union
+sources:
+  - url: https://en.wikipedia.org/wiki/Service_Employees_International_Union
+    accessed: 2026-04-27

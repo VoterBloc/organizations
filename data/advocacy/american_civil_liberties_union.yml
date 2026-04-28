@@ -1,0 +1,28 @@
+id: vb-org/advocacy:american_civil_liberties_union
+name: American Civil Liberties Union
+type: org
+classification: advocacy
+abbreviation: ACLU
+aliases:
+  - ACLU
+founded: 1920-01-19
+headquarters: ocd-division/country:us/state:ny/place:new_york
+website: https://www.aclu.org
+political_lean: center_left
+tax_status: 501c4
+mission: >
+  To defend and preserve the individual rights and liberties guaranteed to
+  every person in this country by the Constitution and laws of the United
+  States.
+issues:
+  - civil_liberties
+  - free_speech
+  - voting_rights
+  - criminal_justice_reform
+  - immigration
+ids:
+  wikidata: Q468983
+  ballotpedia: American_Civil_Liberties_Union
+sources:
+  - url: https://en.wikipedia.org/wiki/American_Civil_Liberties_Union
+    accessed: 2026-04-27

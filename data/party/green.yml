@@ -1,0 +1,25 @@
+id: vb-org/party:green
+name: Green Party of the United States
+type: party
+classification: minor
+level: national
+abbreviation: GRN
+short_name: Greens
+aliases:
+  - Green
+  - G
+  - GP
+  - GPUS
+founded: 2001-07-29
+website: https://www.gp.org
+color: "#17AA5C"
+ideology:
+  - green_politics
+  - progressive
+  - eco-socialism
+ids:
+  wikidata: Q1093857
+  ballotpedia: Green_Party
+sources:
+  - url: https://en.wikipedia.org/wiki/Green_Party_of_the_United_States
+    accessed: 2026-04-27

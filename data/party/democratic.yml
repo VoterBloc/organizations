@@ -1,0 +1,25 @@
+id: vb-org/party:democratic
+name: Democratic Party
+type: party
+classification: major
+level: national
+abbreviation: DEM
+short_name: Democrats
+aliases:
+  - Democratic
+  - D
+  - Dem
+founded: 1828-01-08
+website: https://democrats.org
+color: "#0015BC"
+ideology:
+  - liberal
+  - progressive
+  - center-left
+ids:
+  wikidata: Q29552
+  ballotpedia: Democratic_Party
+  fec: DNC
+sources:
+  - url: https://en.wikipedia.org/wiki/Democratic_Party_(United_States)
+    accessed: 2026-04-27

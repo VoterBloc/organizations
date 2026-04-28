@@ -1,0 +1,28 @@
+id: vb-org/party:republican
+name: Republican Party
+type: party
+classification: major
+level: national
+abbreviation: GOP
+short_name: Republicans
+aliases:
+  - Republican
+  - R
+  - Rep
+  - GOP
+other_names:
+  - name: Grand Old Party
+founded: 1854-03-20
+website: https://gop.com
+color: "#E81B23"
+ideology:
+  - conservative
+  - center-right
+  - right-wing
+ids:
+  wikidata: Q29468
+  ballotpedia: Republican_Party
+  fec: RNC
+sources:
+  - url: https://en.wikipedia.org/wiki/Republican_Party_(United_States)
+    accessed: 2026-04-27

@@ -1,0 +1,28 @@
+id: vb-org/think_tank:heritage_foundation
+name: The Heritage Foundation
+type: org
+classification: think_tank
+short_name: Heritage
+aliases:
+  - Heritage
+  - Heritage Foundation
+founded: 1973-02-16
+headquarters: ocd-division/country:us/district:dc
+website: https://www.heritage.org
+political_lean: right
+tax_status: 501c3
+mission: >
+  To formulate and promote conservative public policies based on the
+  principles of free enterprise, limited government, individual freedom,
+  traditional American values, and a strong national defense.
+issues:
+  - free_markets
+  - limited_government
+  - national_defense
+  - traditional_values
+ids:
+  wikidata: Q635613
+  ballotpedia: The_Heritage_Foundation
+sources:
+  - url: https://en.wikipedia.org/wiki/The_Heritage_Foundation
+    accessed: 2026-04-27
