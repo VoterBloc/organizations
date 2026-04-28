@@ -86,6 +86,12 @@ should look for them.
 - **`affiliated_party`** must be a `vb-org/party:...` id (e.g. DCCC
   affiliated with `vb-org/party:democratic`).
 - **`members` on coalitions** is a list of `vb-org/...` ids of member orgs.
+- **`logo`** points to a canonical free-license source — prefer
+  Wikimedia Commons; fall back to the entity's own official logo URL.
+  Do not vendor logo files into this repo (most are trademarked and CC0
+  doesn't cover trademarks) and do not point at consumer-specific CDNs.
+  The field records *which* logo is canonical; how a production app
+  serves it (fetch-and-cache, own CDN, etc.) is a consumer concern.
 - **`ids` map has a recommended vocabulary**: `wikidata`, `wikipedia`,
   `ballotpedia`, `fec`, `ein`, `opensecrets`, `guidestar`,
   `openstates_organization`, `osm_relation`, `twitter_id`. Linter (when
