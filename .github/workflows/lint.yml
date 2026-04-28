@@ -1,19 +1,26 @@
-name: lint
+name: ci
 
 on:
   pull_request:
   push:
     branches: [main]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  lint:
+  ci:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: ${{ matrix.python-version }}
           cache: pip
 
       - name: Install package
@@ -27,7 +34,7 @@ jobs:
 
       - name: Check SCHEMA export is up to date
         run: |
-          organizations schema --out schema/entity.schema.json
+          organizations schema
           if ! git diff --exit-code -- schema/entity.schema.json; then
             echo "::error::schema/entity.schema.json is out of sync with models.py — run 'organizations schema' and commit the result."
             exit 1
