@@ -52,7 +52,12 @@ should look for them.
 - **`same_as` is a list of `{id, note}`** (not a string). Use for
   alternative ids that point to the same real-world entity.
 - **`headquarters`** is an `ocd-division/...` id (cross-link to the
-  `divisions` repo), not free-form text.
+  `divisions` repo), not free-form text. It's the *physical* HQ.
+- **`jurisdiction`** is an `ocd-division/...` id describing the entity's
+  *scope of operation* (where it acts), not where it sits. National
+  entities leave it unset; consumers default to `country:us`. Only set
+  it when the entity is bound to a state or smaller jurisdiction
+  (state party affiliates, state PACs, a city-only advocacy group).
 - **`affiliated_party`** must be a `vb-org/party:...` id (e.g. DCCC
   affiliated with `vb-org/party:democratic`).
 - **`members` on coalitions** is a list of `vb-org/...` ids of member orgs.

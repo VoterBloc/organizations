@@ -179,6 +179,13 @@ class BaseEntity(_Base):
     dissolved: date | None = None
     headquarters: str | None = None  # ocd-division/... id of HQ city/state
 
+    # The OCD division this entity operates within (scope of operation,
+    # not HQ location). Set when the entity is bound to a state or smaller
+    # jurisdiction — e.g. state party affiliates, state-level PACs, a
+    # city-only advocacy group. Leave unset for nationally-scoped entities;
+    # consumers default to country:us.
+    jurisdiction: str | None = None
+
     website: HttpUrl | None = None
     logo: HttpUrl | None = None
 
@@ -209,15 +216,13 @@ class BaseEntity(_Base):
         parse_vb_org_id(v)
         return v
 
-    @field_validator("headquarters")
+    @field_validator("headquarters", "jurisdiction")
     @classmethod
-    def _valid_headquarters(cls, v: str | None) -> str | None:
+    def _valid_ocd_division_id(cls, v: str | None) -> str | None:
         if v is None:
             return v
         if not v.startswith("ocd-division/"):
-            raise ValueError(
-                f"headquarters must be an ocd-division/... id: {v!r}"
-            )
+            raise ValueError(f"must be an ocd-division/... id: {v!r}")
         return v
 
 
@@ -243,19 +248,9 @@ class Party(BaseEntity):
 
     classification: PartyClassification | None = None
     level: PartyLevel | None = None  # national / state / local affiliate
-    state: str | None = None         # ocd-division/country:us/state:ca for state affiliates
     color: str | None = None         # canonical brand color, e.g. "#0015BC"
     ideology: list[str] = Field(default_factory=list)  # short tags
     platform_url: HttpUrl | None = None  # current platform document
-
-    @field_validator("state")
-    @classmethod
-    def _valid_state(cls, v: str | None) -> str | None:
-        if v is None:
-            return v
-        if not v.startswith("ocd-division/"):
-            raise ValueError(f"state must be an ocd-division/... id: {v!r}")
-        return v
 
     @model_validator(mode="after")
     def _check_id_root(self) -> "Party":
