@@ -1,0 +1,30 @@
+id: vb-org/party:libertarian
+name: Libertarian Party
+classification: party
+abbreviation: LP
+short_name: Libertarians
+aliases:
+  - Libertarian
+  - L
+  - LPUS
+other_names:
+  - name: The Party of Principle
+founded: 1971-12-11
+website: https://www.lp.org
+colors:
+  - "#E5C601"
+ideology:
+  - libertarianism
+  - classical_liberalism
+  - fiscal_conservatism
+  - non_interventionism
+  - civil_libertarianism
+ids:
+  wikidata: Q558334
+  ballotpedia: Libertarian_Party
+  fec: LNC
+sources:
+  - url: https://en.wikipedia.org/wiki/Libertarian_Party_(United_States)
+    accessed: 2026-04-28
+  - url: https://www.wikidata.org/wiki/Q558334
+    accessed: 2026-04-28
