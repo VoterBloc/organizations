@@ -1,0 +1,20 @@
+id: vb-org/party:working_families
+name: Working Families Party
+classification: party
+abbreviation: WFP
+short_name: Working Families
+website: https://workingfamilies.org
+colors:
+  - "#F4563B"
+ideology:
+  - progressivism
+  - social_democracy
+  - democratic_socialism
+ids:
+  wikidata: Q2741156
+  ballotpedia: Working_Families_Party
+sources:
+  - url: https://en.wikipedia.org/wiki/Working_Families_Party
+    accessed: 2026-04-28
+  - url: https://www.wikidata.org/wiki/Q2741156
+    accessed: 2026-04-28

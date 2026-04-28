@@ -1,0 +1,25 @@
+id: vb-org/party:constitution
+name: Constitution Party
+classification: party
+abbreviation: CP
+short_name: Constitution
+other_names:
+  - name: U.S. Taxpayers' Party
+    end_date: 1999-12-31
+website: https://constitutionparty.com
+colors:
+  - "#A356DE"
+ideology:
+  - paleoconservatism
+  - christian_right
+  - social_conservatism
+  - fiscal_conservatism
+  - ultraconservatism
+ids:
+  wikidata: Q1128321
+  ballotpedia: Constitution_Party
+sources:
+  - url: https://en.wikipedia.org/wiki/Constitution_Party_(United_States)
+    accessed: 2026-04-28
+  - url: https://www.wikidata.org/wiki/Q1128321
+    accessed: 2026-04-28
