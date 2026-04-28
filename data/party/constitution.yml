@@ -1,9 +1,8 @@
 id: vb-org/party:constitution
 name: Constitution Party
 classification: party
+abbreviation: CP
 short_name: Constitution
-aliases:
-  - CP
 other_names:
   - name: U.S. Taxpayers' Party
     end_date: 1999-12-31

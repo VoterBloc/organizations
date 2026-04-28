@@ -3,8 +3,6 @@ name: Working Families Party
 classification: party
 abbreviation: WFP
 short_name: Working Families
-aliases:
-  - WFP
 website: https://workingfamilies.org
 colors:
   - "#F4563B"
