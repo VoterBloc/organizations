@@ -1,8 +1,6 @@
 id: vb-org/party:republican
 name: Republican Party
-type: party
-classification: major
-level: national
+classification: party
 abbreviation: GOP
 short_name: Republicans
 aliases:
@@ -14,7 +12,8 @@ other_names:
   - name: Grand Old Party
 founded: 1854-03-20
 website: https://gop.com
-color: "#E81B23"
+colors:
+  - "#E81B23"
 ideology:
   - conservative
   - center-right

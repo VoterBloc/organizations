@@ -86,14 +86,17 @@ also belong in `aliases:`.
 
 ## Schema
 
-The schema lives in `src/organizations/models.py` (pydantic). It has two
-top-level types:
+There is one entity class, `Organization`, defined in
+`src/organizations/models.py` (pydantic). A party is just an
+`Organization` whose `classification` is `party`. Other classification
+values cover advocacy groups, PACs, unions, think tanks, foundations,
+coalitions, legislative caucuses, religious lobbies, media outlets, and
+more — see [`SCHEMA.md`](./SCHEMA.md) for the full list.
 
-- `party` — a political party (`Party`)
-- `org` — everything else, with a `classification` discriminator
-  (`Organization`)
-
-See `src/organizations/models.py` for the full field list.
+For a human-readable reference with field tables, sub-object shapes, and
+validation rules, see [`SCHEMA.md`](./SCHEMA.md). A JSON Schema export
+of the model is committed at `schema/entity.schema.json` — regenerate
+it after model changes with `.venv/bin/organizations schema`.
 
 ## License
 

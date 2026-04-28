@@ -1,0 +1,769 @@
+{
+  "$defs": {
+    "Contact": {
+      "additionalProperties": false,
+      "description": "A contact point: HQ, press, donor relations, members services, etc.\n\n`classification` lets consumers filter without string-matching\nfree-form notes. Common classifications: ``hq``, ``press``,\n``donor``, ``members``, ``main``, ``mailing``.",
+      "properties": {
+        "address": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Address"
+        },
+        "classification": {
+          "title": "Classification",
+          "type": "string"
+        },
+        "email": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Email"
+        },
+        "name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Name"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        },
+        "phone": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Phone"
+        },
+        "url": {
+          "anyOf": [
+            {
+              "format": "uri",
+              "maxLength": 2083,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Url"
+        }
+      },
+      "required": [
+        "classification"
+      ],
+      "title": "Contact",
+      "type": "object"
+    },
+    "Link": {
+      "additionalProperties": false,
+      "properties": {
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        },
+        "url": {
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "title": "Url",
+          "type": "string"
+        }
+      },
+      "required": [
+        "url"
+      ],
+      "title": "Link",
+      "type": "object"
+    },
+    "OtherName": {
+      "additionalProperties": false,
+      "properties": {
+        "end_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End Date"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "start_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start Date"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "OtherName",
+      "type": "object"
+    },
+    "Person": {
+      "additionalProperties": false,
+      "description": "A person record \u2014 leader, founder, key staffer.\n\nLightweight; not a primary entity. For first-class person records,\nconsumers should reference `openstates/people` (via the\n`openstates` key in `ids`) rather than maintaining biographies here.",
+      "properties": {
+        "end_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End Date"
+        },
+        "ids": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Ids",
+          "type": "object"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        },
+        "role": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Role"
+        },
+        "start_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start Date"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "Person",
+      "type": "object"
+    },
+    "SameAs": {
+      "additionalProperties": false,
+      "description": "A cross-reference to another entity that is the same real-world thing.",
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "title": "SameAs",
+      "type": "object"
+    },
+    "Social": {
+      "additionalProperties": false,
+      "description": "A social-media presence.",
+      "properties": {
+        "handle": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Handle"
+        },
+        "platform": {
+          "enum": [
+            "twitter",
+            "facebook",
+            "instagram",
+            "tiktok",
+            "youtube",
+            "bluesky",
+            "mastodon",
+            "threads",
+            "linkedin",
+            "reddit",
+            "rumble",
+            "truth_social",
+            "telegram"
+          ],
+          "title": "Platform",
+          "type": "string"
+        },
+        "url": {
+          "anyOf": [
+            {
+              "format": "uri",
+              "maxLength": 2083,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Url"
+        },
+        "verified": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Verified"
+        }
+      },
+      "required": [
+        "platform"
+      ],
+      "title": "Social",
+      "type": "object"
+    },
+    "Source": {
+      "additionalProperties": false,
+      "properties": {
+        "accessed": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Accessed"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note"
+        },
+        "url": {
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "title": "Url",
+          "type": "string"
+        }
+      },
+      "required": [
+        "url"
+      ],
+      "title": "Source",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Any politically-active non-individual entity in the curated dataset.\n\nDiscriminated by `classification`: parties (`party`), advocacy\ngroups, PACs, unions, think tanks, foundations, coalitions,\nlegislative caucuses, religious lobbies, media outlets, etc.",
+  "properties": {
+    "abbreviation": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Abbreviation"
+    },
+    "affiliated_party": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Affiliated Party"
+    },
+    "aliases": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Aliases",
+      "type": "array"
+    },
+    "classification": {
+      "enum": [
+        "party",
+        "advocacy",
+        "pac",
+        "super_pac",
+        "527",
+        "union",
+        "trade_association",
+        "professional_association",
+        "think_tank",
+        "foundation",
+        "research",
+        "religious",
+        "media",
+        "ngo",
+        "coalition",
+        "caucus",
+        "political_committee"
+      ],
+      "title": "Classification",
+      "type": "string"
+    },
+    "colors": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Colors",
+      "type": "array"
+    },
+    "contacts": {
+      "items": {
+        "$ref": "#/$defs/Contact"
+      },
+      "title": "Contacts",
+      "type": "array"
+    },
+    "dissolved": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Dissolved"
+    },
+    "ein": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Ein"
+    },
+    "extras": {
+      "additionalProperties": true,
+      "title": "Extras",
+      "type": "object"
+    },
+    "fec_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Fec Id"
+    },
+    "founded": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Founded"
+    },
+    "headquarters": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Headquarters"
+    },
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "ideology": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Ideology",
+      "type": "array"
+    },
+    "ids": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Ids",
+      "type": "object"
+    },
+    "issues": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Issues",
+      "type": "array"
+    },
+    "jurisdiction": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Jurisdiction"
+    },
+    "leadership": {
+      "items": {
+        "$ref": "#/$defs/Person"
+      },
+      "title": "Leadership",
+      "type": "array"
+    },
+    "links": {
+      "items": {
+        "$ref": "#/$defs/Link"
+      },
+      "title": "Links",
+      "type": "array"
+    },
+    "logo": {
+      "anyOf": [
+        {
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Logo"
+    },
+    "members": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Members",
+      "type": "array"
+    },
+    "mission": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Mission"
+    },
+    "motto": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Motto"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "other_names": {
+      "items": {
+        "$ref": "#/$defs/OtherName"
+      },
+      "title": "Other Names",
+      "type": "array"
+    },
+    "parent": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Parent"
+    },
+    "platform_url": {
+      "anyOf": [
+        {
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Platform Url"
+    },
+    "political_lean": {
+      "anyOf": [
+        {
+          "enum": [
+            "left",
+            "center_left",
+            "center",
+            "center_right",
+            "right",
+            "nonpartisan",
+            "varies"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Political Lean"
+    },
+    "same_as": {
+      "items": {
+        "$ref": "#/$defs/SameAs"
+      },
+      "title": "Same As",
+      "type": "array"
+    },
+    "short_name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Short Name"
+    },
+    "social": {
+      "items": {
+        "$ref": "#/$defs/Social"
+      },
+      "title": "Social",
+      "type": "array"
+    },
+    "sources": {
+      "items": {
+        "$ref": "#/$defs/Source"
+      },
+      "title": "Sources",
+      "type": "array"
+    },
+    "successor": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Successor"
+    },
+    "summary": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Summary"
+    },
+    "tax_status": {
+      "anyOf": [
+        {
+          "enum": [
+            "501c3",
+            "501c4",
+            "501c5",
+            "501c6",
+            "527",
+            "for_profit",
+            "government",
+            "other"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Tax Status"
+    },
+    "website": {
+      "anyOf": [
+        {
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Website"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "classification"
+  ],
+  "title": "Organization",
+  "type": "object"
+}

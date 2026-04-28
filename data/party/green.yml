@@ -1,8 +1,6 @@
 id: vb-org/party:green
 name: Green Party of the United States
-type: party
-classification: minor
-level: national
+classification: party
 abbreviation: GRN
 short_name: Greens
 aliases:
@@ -12,7 +10,8 @@ aliases:
   - GPUS
 founded: 2001-07-29
 website: https://www.gp.org
-color: "#17AA5C"
+colors:
+  - "#17AA5C"
 ideology:
   - green_politics
   - progressive

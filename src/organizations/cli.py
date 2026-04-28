@@ -10,7 +10,7 @@ import click
 import yaml
 
 from organizations.lint import format_issues, lint_tree
-from organizations.models import Entity
+from organizations.models import Organization
 from organizations.paths import expected_path, parse_vb_org_id
 
 
@@ -39,7 +39,7 @@ def show(file: Path) -> None:
     """Load and print an entity YAML as JSON (canonicalized)."""
     with file.open("r", encoding="utf-8") as f:
         raw = yaml.safe_load(f)
-    entity = Entity.validate_python(raw)
+    entity = Organization.model_validate(raw)
     click.echo(entity.model_dump_json(indent=2, exclude_none=True))
 
 
@@ -61,7 +61,7 @@ def path_cmd(vb_id: str) -> None:
 def schema(out: Path) -> None:
     """(Re)generate the JSON Schema from the pydantic models."""
     out.parent.mkdir(parents=True, exist_ok=True)
-    js = Entity.json_schema()
+    js = Organization.model_json_schema()
     out.write_text(
         json.dumps(js, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )

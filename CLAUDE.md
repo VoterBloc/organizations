@@ -39,9 +39,16 @@ closed issues #3, #4, #5, and #6 for the principle applied.
 
 ## Architecture
 
-The schema has **one canonical definition**: `src/organizations/models.py`
-(pydantic). After changing a model, downstream artifacts (JSON Schema,
-human-readable `SCHEMA.md`) need to be regenerated/updated by hand.
+There is **one entity class**, `Organization`, defined in
+`src/organizations/models.py` (pydantic). A party is just an
+`Organization` whose `classification` is `party`. There is no separate
+`Party` class — parties are organizations, and splitting them was
+mirroring voterbloc's table boundaries rather than a fact about the
+data. See `SCHEMA.md` for the full field list.
+
+After changing the model, regenerate the JSON Schema export
+(`organizations schema`) and update `SCHEMA.md` by hand to keep the
+human-readable doc in sync.
 
 File paths are derived mechanically from ids. Rules:
 
@@ -72,8 +79,13 @@ should look for them.
 
 ## Schema conventions easy to get wrong
 
-- **`type` is `party` or `org`** — not the classification. The
-  classification is a separate field on `org` entities.
+- **`classification` is the only top-level discriminator.** There is no
+  `type` field. `classification: party` means "this is a party";
+  `classification: advocacy` means "this is an advocacy group"; etc.
+  See `SCHEMA.md` for the full list of values.
+- **The id's root segment must equal `classification`.** A file with
+  `classification: party` must have an id like `vb-org/party:...`. The
+  linter enforces this.
 - **`same_as` is a list of `{id, note}`** (not a string). Use for
   alternative ids that point to the same real-world entity.
 - **`headquarters`** is an `ocd-division/...` id (cross-link to the
@@ -92,6 +104,11 @@ should look for them.
   doesn't cover trademarks) and do not point at consumer-specific CDNs.
   The field records *which* logo is canonical; how a production app
   serves it (fetch-and-cache, own CDN, etc.) is a consumer concern.
+- **`colors`** is a list of 6-digit hex strings. **The first entry is
+  the primary brand color**; subsequent entries are secondary / accent
+  colors in declared order. Don't include white as the primary unless
+  it's actually the brand's primary. Empty list (or omitted) means no
+  curated colors — consumers should not invent values.
 - **`ids` map has a recommended vocabulary**: `wikidata`, `wikipedia`,
   `ballotpedia`, `fec`, `ein`, `opensecrets`, `guidestar`,
   `openstates_organization`, `osm_relation`, `twitter_id`. Linter (when
@@ -102,7 +119,7 @@ should look for them.
 This repo is for data that is **hard to source programmatically**:
 mission statements, mottos, leadership, founding history, official
 contact info, curated identifiers and links, ideology tags, prose
-summaries, classification.
+summaries, classification, brand colors.
 
 Fields like `headquarters`, `founded`, `dissolved` *exist* but should be
 left empty unless wikidata/wikipedia is wrong or missing for that entity.

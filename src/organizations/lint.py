@@ -11,7 +11,7 @@ from typing import Any
 import yaml
 from pydantic import ValidationError
 
-from organizations.models import Entity
+from organizations.models import Organization
 from organizations.paths import expected_path
 
 
@@ -52,7 +52,7 @@ def lint_file(path: Path, data_root: Path) -> list[LintIssue]:
         return [LintIssue(path, "top-level YAML must be a mapping")]
 
     try:
-        entity = Entity.validate_python(raw)
+        entity = Organization.model_validate(raw)
     except ValidationError as e:
         for err in e.errors():
             loc = ".".join(str(p) for p in err["loc"]) or "<root>"
