@@ -20,9 +20,10 @@ human-readable `SCHEMA.md`) need to be regenerated/updated by hand.
 
 File paths are derived mechanically from ids. Rules:
 
-- `data/party/{slug}.yml` for national parties (e.g. `dem`, `gop`, `grn`).
-- `data/party/state/{state}-{slug}.yml` for state affiliates
-  (e.g. `ca-dem.yml`).
+- `data/party/{slug}.yml` for national parties (e.g. `democratic`,
+  `republican`, `green`).
+- `data/party/state/{slug}-{state}.yml` for state affiliates
+  (e.g. `democratic-ca.yml`).
 - `data/{classification}/{slug}.yml` for everything else — **directory
   is the OCD-style classification segment, verbatim and singular**
   (`union/`, `think_tank/`, `advocacy/`, not pluralized).
@@ -53,7 +54,7 @@ should look for them.
 - **`headquarters`** is an `ocd-division/...` id (cross-link to the
   `divisions` repo), not free-form text.
 - **`affiliated_party`** must be a `vb-org/party:...` id (e.g. DCCC
-  affiliated with `vb-org/party:dem`).
+  affiliated with `vb-org/party:democratic`).
 - **`members` on coalitions** is a list of `vb-org/...` ids of member orgs.
 - **`ids` map has a recommended vocabulary**: `wikidata`, `wikipedia`,
   `ballotpedia`, `fec`, `ein`, `opensecrets`, `guidestar`,
@@ -73,6 +74,32 @@ Consumers of this data should prefer those sources for those facts.
 Don't spend curation effort on them.
 
 Every file should have at least one `sources:` entry.
+
+### Prose / enrichment boundary
+
+This repo holds **short factual prose** only: `summary` (1–3 sentence
+overview), `mission`, `motto`, plus structured `leadership`. That's it.
+
+**Do not add long-form narrative fields** to YAML or to `models.py`:
+no `intro`, `history`, `current_positions`, `notable_leaders`,
+`notable_actions`, or other narrative blocks. Those live in voterbloc's
+enrichment tables (`party_enrichment`,
+`political_organization_enrichment`).
+
+The voterbloc enrichment pipeline:
+
+1. Reads YAML prose (`summary`, `mission`, etc.) as **input** to its
+   AI-generation step, and
+2. Falls back to the YAML prose at read time when no enrichment row
+   exists yet for an entity.
+
+So curated YAML prose is both seed material and a safe default. AI
+enrichment is the layer above it; editorial overrides happen in
+voterbloc, not here.
+
+If you find yourself wanting to write 3+ paragraphs of narrative into a
+YAML file, that's a sign the content belongs in a voterbloc enrichment
+override, not in this repo. (Decision recorded in #6, Option A.)
 
 What does **not** belong:
 
