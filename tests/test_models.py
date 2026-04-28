@@ -96,3 +96,99 @@ def test_member_ids_must_be_vb_org() -> None:
 def test_extra_fields_forbidden() -> None:
     with pytest.raises(ValidationError):
         Entity.validate_python(_minimal_party(some_unknown_field=42))
+
+
+# ---------------------------------------------------------------------------
+# #7 validation hardening
+# ---------------------------------------------------------------------------
+
+
+def test_successor_validates_as_vb_org_id() -> None:
+    with pytest.raises(ValidationError):
+        Entity.validate_python(_minimal_party(successor="not-an-id"))
+
+
+def test_successor_accepts_valid_id() -> None:
+    Entity.validate_python(
+        _minimal_party(successor="vb-org/party:republican")
+    )
+
+
+def test_same_as_id_validates_as_vb_org_id() -> None:
+    with pytest.raises(ValidationError):
+        Entity.validate_python(
+            _minimal_party(same_as=[{"id": "ocd-division/country:us"}])
+        )
+
+
+def test_same_as_id_accepts_valid_id() -> None:
+    Entity.validate_python(
+        _minimal_party(same_as=[{"id": "vb-org/party:republican"}])
+    )
+
+
+def test_color_accepts_six_digit_hex() -> None:
+    e = Entity.validate_python(_minimal_party(color="#0015BC"))
+    assert e.color == "#0015BC"
+
+
+def test_color_accepts_lowercase_hex() -> None:
+    Entity.validate_python(_minimal_party(color="#abcdef"))
+
+
+def test_color_rejects_three_digit_hex() -> None:
+    with pytest.raises(ValidationError):
+        Entity.validate_python(_minimal_party(color="#abc"))
+
+
+def test_color_rejects_named_color() -> None:
+    with pytest.raises(ValidationError):
+        Entity.validate_python(_minimal_party(color="blue"))
+
+
+def test_color_rejects_missing_hash() -> None:
+    with pytest.raises(ValidationError):
+        Entity.validate_python(_minimal_party(color="0015BC"))
+
+
+def test_color_optional() -> None:
+    e = Entity.validate_python(_minimal_party())
+    assert e.color is None
+
+
+def test_self_parent_rejected() -> None:
+    with pytest.raises(ValidationError) as exc:
+        Entity.validate_python(
+            _minimal_party(parent="vb-org/party:democratic")
+        )
+    assert "own parent" in str(exc.value)
+
+
+def test_self_successor_rejected() -> None:
+    with pytest.raises(ValidationError) as exc:
+        Entity.validate_python(
+            _minimal_party(successor="vb-org/party:democratic")
+        )
+    assert "own successor" in str(exc.value)
+
+
+def test_self_same_as_rejected() -> None:
+    with pytest.raises(ValidationError) as exc:
+        Entity.validate_python(
+            _minimal_party(
+                same_as=[{"id": "vb-org/party:democratic"}]
+            )
+        )
+    assert "same_as" in str(exc.value)
+
+
+def test_self_in_members_rejected() -> None:
+    with pytest.raises(ValidationError) as exc:
+        Entity.validate_python(
+            _minimal_org(
+                classification="coalition",
+                id="vb-org/coalition:america_votes",
+                members=["vb-org/coalition:america_votes"],
+            )
+        )
+    assert "members" in str(exc.value)

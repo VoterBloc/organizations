@@ -142,6 +142,12 @@ class SameAs(_Base):
     id: str
     note: str | None = None
 
+    @field_validator("id")
+    @classmethod
+    def _valid_vb_org_id(cls, v: str) -> str:
+        parse_vb_org_id(v)
+        return v
+
 
 class OtherName(_Base):
     name: str
@@ -208,9 +214,9 @@ class BaseEntity(_Base):
         parse_vb_org_id(v)
         return v
 
-    @field_validator("parent")
+    @field_validator("parent", "successor")
     @classmethod
-    def _valid_optional_parent(cls, v: str | None) -> str | None:
+    def _valid_optional_vb_org_id(cls, v: str | None) -> str | None:
         if v is None:
             return v
         parse_vb_org_id(v)
@@ -224,6 +230,19 @@ class BaseEntity(_Base):
         if not v.startswith("ocd-division/"):
             raise ValueError(f"must be an ocd-division/... id: {v!r}")
         return v
+
+    @model_validator(mode="after")
+    def _check_no_self_reference(self) -> "BaseEntity":
+        if self.parent == self.id:
+            raise ValueError(f"entity cannot be its own parent: {self.id!r}")
+        if self.successor == self.id:
+            raise ValueError(f"entity cannot be its own successor: {self.id!r}")
+        for sa in self.same_as:
+            if sa.id == self.id:
+                raise ValueError(
+                    f"entity cannot reference itself via same_as: {self.id!r}"
+                )
+        return self
 
 
 # ---------------------------------------------------------------------------
@@ -248,7 +267,11 @@ class Party(BaseEntity):
 
     classification: PartyClassification | None = None
     level: PartyLevel | None = None  # national / state / local affiliate
-    color: str | None = None         # canonical brand color, e.g. "#0015BC"
+    color: str | None = Field(
+        default=None,
+        pattern=r"^#[0-9A-Fa-f]{6}$",
+        description="Canonical brand color as a 6-digit hex string, e.g. '#0015BC'.",
+    )
     ideology: list[str] = Field(default_factory=list)  # short tags
     platform_url: HttpUrl | None = None  # current platform document
 
@@ -357,6 +380,14 @@ class Organization(BaseEntity):
             raise ValueError(
                 f"Organization id root segment ({parsed.root_type!r}) does "
                 f"not match classification ({self.classification!r})"
+            )
+        return self
+
+    @model_validator(mode="after")
+    def _check_no_self_in_members(self) -> "Organization":
+        if self.id in self.members:
+            raise ValueError(
+                f"organization cannot list itself in members: {self.id!r}"
             )
         return self
 
