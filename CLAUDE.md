@@ -12,6 +12,31 @@ the `divisions` repo (OCD divisions) and inspired by `openstates/people`.
 
 **US-only.** Don't add country scoping for other nations.
 
+## Design principle: facts here, projections in consumers
+
+This repo holds **facts about entities** — values that are true
+regardless of which application reads them. Founding dates, EINs,
+member lists, leader names and roles, ideology tags, official
+identifiers. Things a researcher, mobile app, or civic-tech project
+would want as much as voterbloc would.
+
+It does **not** hold consumer-specific projections: display order,
+status workflows, AI-augmented prose, code-format conventions,
+default-fill behavior, claim/verification state, or anything else
+shaped by how a particular application uses the data. Those live in
+the consumer.
+
+**The test for a proposed field:** *would a competing consumer want
+this field with the same value?* If two consumers would reasonably
+want different values (display order, sort precedence), or one
+wouldn't want it at all (verification status, importer fallbacks),
+the field belongs in the consumer, not here.
+
+The apparent purism is a strength, not a weakness. Decoupling means
+voterbloc's tables can evolve without coordinating with curators,
+*and* the dataset stays useful to anyone else who shows up. See
+closed issues #3, #4, #5, and #6 for the principle applied.
+
 ## Architecture
 
 The schema has **one canonical definition**: `src/organizations/models.py`
