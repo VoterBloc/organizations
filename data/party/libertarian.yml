@@ -13,7 +13,9 @@ summary: >
   application of the principle of non-initiation of coercion or fraud. It is the
   third-largest political party in the United States by registration.
 mission: >
-  The LNC's mission is nothing less than a world set free in our lifetime.
+  As Libertarians, we seek a world of liberty: a world in which all individuals
+  are sovereign over their own lives and are not forced to sacrifice their values
+  for the benefit of others.
 motto: The Party of Principle
 founded: 1971-12-11
 website: https://www.lp.org
@@ -40,4 +42,7 @@ sources:
     accessed: 2026-04-28
   - url: https://www.lp.org/about/
     accessed: 2026-04-29
-    note: Source for summary and mission
+    note: Source for summary
+  - url: https://www.lp.org/platform/
+    accessed: 2026-04-29
+    note: Source for mission (platform preamble)
