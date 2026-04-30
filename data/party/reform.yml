@@ -6,13 +6,23 @@ short_name: Reform Party
 aliases:
   - Reform Party USA
   - Reform
+summary: >
+  Founded in 1995 by Ross Perot, the Reform Party of the United States of America
+  is a centrist, populist third party emphasizing fiscal responsibility, balanced
+  budgets, campaign finance reform, term limits, and government ethics rather
+  than the major parties' culture-war issues.
+motto: Honest Leadership, Real Solutions
 founded: 1995-09-03
 website: https://reformparty.org
+political_lean: center
 ideology:
   - radical_centrism
   - populism
   - fiscal_conservatism
   - anti_neoliberalism
+tax_status: "527"
+fec_id: C00331314
+platform_url: https://reformparty.org/our-solutions/
 ids:
   wikidata: Q1893430
   ballotpedia: Reform_Party_of_the_United_States_of_America
@@ -21,3 +31,6 @@ sources:
     accessed: 2026-04-28
   - url: https://www.wikidata.org/wiki/Q1893430
     accessed: 2026-04-28
+  - url: https://reformparty.org/
+    accessed: 2026-04-29
+    note: Source for motto (site tagline)
