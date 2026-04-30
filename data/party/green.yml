@@ -8,17 +8,33 @@ aliases:
   - G
   - GP
   - GPUS
+summary: >
+  The Green Party of the United States is a left-wing third party organized as a
+  federation of state Green parties. Its values are encoded in the "Four Pillars"
+  (Peace and Non-Violence, Ecological Wisdom, Grassroots Democracy, and Social
+  Justice) and an extended "Ten Key Values," and the party refuses corporate
+  funding.
+mission: >
+  We don't take corporate money. We are working to build clean government that
+  works for all of us – not just the 1%.
 founded: 2001-07-29
 website: https://www.gp.org
 colors:
   - "#17AA5C"
+political_lean: left
 ideology:
   - green_politics
   - progressive
   - eco-socialism
+tax_status: "527"
+fec_id: C00370221
+platform_url: https://www.gp.org/platform
 ids:
   wikidata: Q1093857
   ballotpedia: Green_Party
 sources:
   - url: https://en.wikipedia.org/wiki/Green_Party_of_the_United_States
     accessed: 2026-04-27
+  - url: https://www.gp.org/about
+    accessed: 2026-04-29
+    note: Source for summary and mission

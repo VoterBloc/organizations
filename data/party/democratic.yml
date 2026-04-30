@@ -7,14 +7,26 @@ aliases:
   - Democratic
   - D
   - Dem
+summary: >
+  The Democratic Party is one of the two major contemporary political parties in
+  the United States. Founded in 1828, it is the oldest continuing political party
+  in the country. Today it operates as a center-left coalition emphasizing
+  social progress, civil rights, and an active role for government.
+mission: >
+  Leading with our values, fighting for progress, and helping elect Democrats in
+  every state, city, and ZIP code.
 founded: 1828-01-08
 website: https://democrats.org
 colors:
   - "#0015BC"
+political_lean: center_left
 ideology:
   - liberal
   - progressive
   - center-left
+tax_status: "527"
+fec_id: C00010603
+platform_url: https://democrats.org/where-we-stand/party-platform/
 ids:
   wikidata: Q29552
   ballotpedia: Democratic_Party
@@ -22,3 +34,6 @@ ids:
 sources:
   - url: https://en.wikipedia.org/wiki/Democratic_Party_(United_States)
     accessed: 2026-04-27
+  - url: https://democrats.org/who-we-are/about-the-democratic-party/
+    accessed: 2026-04-29
+    note: Source for summary and mission

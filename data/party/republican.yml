@@ -10,14 +10,26 @@ aliases:
   - GOP
 other_names:
   - name: Grand Old Party
+summary: >
+  The Republican Party, also known as the GOP (Grand Old Party), is one of the
+  two major contemporary political parties in the United States. Founded in
+  1854, it operates as a center-right to right-wing coalition emphasizing
+  limited government, free-market economics, and traditional social values.
+mission: >
+  Fight to secure America's future, restore its greatness, and defend the values
+  that have made our nation a beacon of freedom and opportunity.
 founded: 1854-03-20
 website: https://gop.com
 colors:
   - "#E81B23"
+political_lean: center_right
 ideology:
   - conservative
   - center-right
   - right-wing
+tax_status: "527"
+fec_id: C00003418
+platform_url: https://prod-static.gop.com/media/RNC2024-Platform.pdf
 ids:
   wikidata: Q29468
   ballotpedia: Republican_Party
@@ -25,3 +37,6 @@ ids:
 sources:
   - url: https://en.wikipedia.org/wiki/Republican_Party_(United_States)
     accessed: 2026-04-27
+  - url: https://www.gop.com/about-our-party/
+    accessed: 2026-04-29
+    note: Source for summary and mission

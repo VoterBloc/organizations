@@ -7,18 +7,30 @@ aliases:
   - Libertarian
   - L
   - LPUS
-other_names:
-  - name: The Party of Principle
+summary: >
+  Founded in 1971, the Libertarian Party advocates minimal government, free
+  markets, civil liberties, and non-interventionism, grounded in the consistent
+  application of the principle of non-initiation of coercion or fraud. It is the
+  third-largest political party in the United States by registration.
+mission: >
+  As Libertarians, we seek a world of liberty: a world in which all individuals
+  are sovereign over their own lives and are not forced to sacrifice their values
+  for the benefit of others.
+motto: The Party of Principle
 founded: 1971-12-11
 website: https://www.lp.org
 colors:
   - "#E5C601"
+political_lean: varies
 ideology:
   - libertarianism
   - classical_liberalism
   - fiscal_conservatism
   - non_interventionism
   - civil_libertarianism
+tax_status: "527"
+fec_id: C00255695
+platform_url: https://www.lp.org/platform/
 ids:
   wikidata: Q558334
   ballotpedia: Libertarian_Party
@@ -28,3 +40,9 @@ sources:
     accessed: 2026-04-28
   - url: https://www.wikidata.org/wiki/Q558334
     accessed: 2026-04-28
+  - url: https://www.lp.org/about/
+    accessed: 2026-04-29
+    note: Source for summary
+  - url: https://www.lp.org/platform/
+    accessed: 2026-04-29
+    note: Source for mission (platform preamble)

@@ -3,9 +3,19 @@ name: Working Families Party
 classification: party
 abbreviation: WFP
 short_name: Working Families
+summary: >
+  Founded in 1998 in New York by labor unions and community organizations as a
+  successor to the New Party, the Working Families Party is a progressive third
+  party pursuing an "inside/outside" strategy of recruiting and electing
+  people-powered candidates up and down the ballot. It operates in nearly two
+  dozen states but holds statewide ballot lines only in New York, Connecticut,
+  and Oregon.
+mission: >
+  Fighting for an America that works for the many, not the few.
 website: https://workingfamilies.org
 colors:
   - "#F4563B"
+political_lean: left
 ideology:
   - progressivism
   - social_democracy
@@ -18,3 +28,6 @@ sources:
     accessed: 2026-04-28
   - url: https://www.wikidata.org/wiki/Q2741156
     accessed: 2026-04-28
+  - url: https://workingfamilies.org/about/
+    accessed: 2026-04-29
+    note: Source for summary and mission
