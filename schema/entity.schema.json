@@ -574,6 +574,18 @@
       "default": null,
       "title": "Logo"
     },
+    "member_label": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Member Label"
+    },
     "members": {
       "items": {
         "type": "string"

@@ -3,6 +3,7 @@ name: Libertarian Party
 classification: party
 abbreviation: LP
 short_name: Libertarians
+member_label: Libertarian
 aliases:
   - Libertarian
   - L

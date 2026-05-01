@@ -232,6 +232,14 @@ class Organization(_Base):
 
     short_name: str | None = None
     abbreviation: str | None = None
+
+    # Singular label for an individual affiliated with the entity — for
+    # parties, the singular demonym used to describe one member (e.g.
+    # "Democrat", "Republican", "Libertarian"). Use the form that would
+    # appear next to a person's name. Leave empty when no natural
+    # singular label exists (e.g. "Working Families Party member").
+    member_label: str | None = None
+
     aliases: list[str] = Field(default_factory=list)
     other_names: list[OtherName] = Field(default_factory=list)
     summary: str | None = None

@@ -3,6 +3,7 @@ name: Republican Party
 classification: party
 abbreviation: GOP
 short_name: Republicans
+member_label: Republican
 aliases:
   - Republican
   - R
