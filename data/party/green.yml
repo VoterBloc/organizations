@@ -3,6 +3,7 @@ name: Green Party of the United States
 classification: party
 abbreviation: GRN
 short_name: Greens
+member_label: Green
 aliases:
   - Green
   - G

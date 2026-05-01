@@ -3,6 +3,7 @@ name: Democratic Party
 classification: party
 abbreviation: DEM
 short_name: Democrats
+member_label: Democrat
 aliases:
   - Democratic
   - D

@@ -163,6 +163,7 @@ rather than a fact about the data).
 | -------------- | ------------------- | ------------------------------------------------------------------------------------------------------------ |
 | `short_name`   | string              | Terser display form, e.g. "Democrats", "ACLU".                                                              |
 | `abbreviation` | string              | The short form / acronym (e.g. `DEM`, `ACLU`).                                                              |
+| `member_label` | string              | Singular label for an individual affiliated with the entity — for parties, the singular demonym (e.g. "Democrat", "Republican"). Use the form that would appear next to a person's name. Leave empty when no natural singular label exists. |
 | `aliases`      | list\[string]       | Alternate names the entity is known by.                                                                     |
 | `other_names`  | list\[object]       | Historical / alternate names: `{name, start_date?, end_date?}`. Same shape as openstates/people.            |
 | `summary`      | string              | 1–3 sentence factual overview. Used as input/fallback for downstream enrichment.                             |
